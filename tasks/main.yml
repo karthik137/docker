@@ -9,17 +9,13 @@
     state: present
 
 - name: Add Docker apt key.
-  apt_key:
-    url: http://download.docker.com/linux/ubuntu/gpg
-    id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
-    state: present
-    register: add_repository_key
+  shell: "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"
 
 - name: Add Docker repository.
-  apt_repository:
-    repo: "{{ docker_apt_repository }}"
-    state: present
-    update_cache: true
+  shell: "add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\""
+
+- name: Update 
+  shell: "apt-get update"
 
 - name: Install Docker.
   package:
