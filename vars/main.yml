@@ -1,6 +1,0 @@
----
-# vars file for docker
-- hosts: all
-  sudo: yes
-  roles:
-  - { role: "docker", docker_version: "18.09" }
