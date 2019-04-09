@@ -17,6 +17,9 @@
 - name: Update 
   shell: "apt-get update"
 
+- name: Add user to docker group
+  shell: "usermod -aG docker $USER"
+
 - name: Install Docker.
   package:
     name: "{{ docker_package }}"
