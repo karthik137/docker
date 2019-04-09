@@ -17,13 +17,13 @@
 - name: Update 
   shell: "apt-get update"
 
+- name: Install Docker.
+  package:
+    name: "{{ docker_package }}"
+    state: "{{ docker_package_state }}"
+
 - name: Create docker group
   shell: "groupadd docker"
 
 - name: Add user to docker group
   shell: "usermod -aG docker $USER"
-
-- name: Install Docker.
-  package:
-    name: "{{ docker_package }}"
-    state: "{{ docker_package_state }}"
