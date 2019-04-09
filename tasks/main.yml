@@ -23,7 +23,7 @@
     state: "{{ docker_package_state }}"
 
 - name: Add user to docker group
-  shell: "usermod -aG docker $USER"
+  shell: "sudo usermod -aG docker $USER"
 
 - name: Restart docker service
   shell: "service docker restart"
