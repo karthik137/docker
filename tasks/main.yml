@@ -17,6 +17,9 @@
 - name: Update 
   shell: "apt-get update"
 
+- name: Create docker group
+  shell: "groupadd docker"
+
 - name: Add user to docker group
   shell: "usermod -aG docker $USER"
 
